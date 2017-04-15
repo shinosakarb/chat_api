@@ -33,7 +33,11 @@ class MessageForm extends Component {
 
   onDelete() {
     const { actions, message } = this.props
-    actions.deleteMessage( message.id )
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/messages/${message.id}`,
+      success: ( (data) => actions.deleteMessage(message.id) )
+    })
   }
 
   render() {
