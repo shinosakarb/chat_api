@@ -1,6 +1,6 @@
-import { HELLO_WORLD_NAME_UPDATE } from '../constants/chat'
+import { ADD_MESSAGE } from '../constants/chat'
 
-export const updateName = (text) => ({
-  type: HELLO_WORLD_NAME_UPDATE,
-  text,
+export const addMessage = (message) => ({
+  type: ADD_MESSAGE,
+  message,
 })

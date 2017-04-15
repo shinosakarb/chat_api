@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
           <MessageList messages={ chat } />
-          <MessageForm />
+          <MessageForm actions={ actions } />
       </div>
     )
   }
