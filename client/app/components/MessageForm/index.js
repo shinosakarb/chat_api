@@ -23,7 +23,7 @@ class MessageForm extends Component {
     const { message } = this.props
     return (
       <div>
-        <textarea ref={ (input) => {this.textMessage = input}} rows="4" cols="40" />
+        <textarea ref={ (input) => {this.textMessage = input}} rows="4" cols="40" defaultValue={message?message.text:null} />
         { message ? <input type="button" value="cancel" onClick={this.onCancel.bind(this)} /> : null }
         <input type="button" value={message ? "update":"register"} onClick={this.onsubmit.bind(this)} />
       </div>
