@@ -15,7 +15,7 @@ class App extends Component {
     const { chat, actions } = this.props
     return (
       <div>
-          <MessageList messages={ chat } />
+          <MessageList messages={ chat } actions={ actions } />
           <MessageForm actions={ actions } />
       </div>
     )
