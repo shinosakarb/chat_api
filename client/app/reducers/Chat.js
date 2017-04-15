@@ -28,6 +28,7 @@ const chat = (state = '', action) => {
       return state.map( (message) => {
         if( message.id === action.message_id ) {
           message['text'] = action.new_text
+          message['displayState'] = true
           return message
         }
         else {
