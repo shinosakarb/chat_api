@@ -5,7 +5,14 @@ class MessageForm extends Component {
   onsubmit() {
     const { message, actions } = this.props
     if( message ) {
-      actions.updateMessage( message.id, this.textMessage.value )
+      $.ajax({
+        type: 'PATCH',
+        url: '/api/messages/' + message.id,
+        data: {
+          message: {text: this.textMessage.value}
+        },
+        success: (data) => actions.updateMessage( message.id, this.textMessage.value )
+      })
     }
     else {
       $.ajax({
