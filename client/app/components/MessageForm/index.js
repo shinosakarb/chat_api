@@ -15,10 +15,12 @@ class MessageForm extends Component {
   }
 
   render() {
+    const { message } = this.props
     return (
       <div>
         <textarea ref={ (input) => {this.textMessage = input}} rows="4" cols="40" />
-        <input type="button" value="register" onClick={this.onsubmit.bind(this)} />
+        { message ? <input type="button" value="cancel" /> : null }
+        <input type="button" value={message ? "update":"register"} onClick={this.onsubmit.bind(this)} />
       </div>
     )
   }
