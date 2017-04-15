@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import $ from 'jquery'
 
 class MessageForm extends Component {
   onsubmit() {
     const { actions } = this.props
-    actions.addMessage( this.textMessage.value )
+    $.ajax({
+      type: 'POST',
+      url: '/api/messages',
+      data: {
+        message: {text: this.textMessage.value}
+      },
+      success: ( (data)=>actions.addMessage(data) )
+    })
   }
 
   render() {

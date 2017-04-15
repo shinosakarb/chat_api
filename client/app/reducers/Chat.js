@@ -6,7 +6,7 @@ export const chatInitialState = [{"id":2,"text":"message2"},{"id":1,"text":"mess
 const chat = (state = '', action) => {
   switch (action.type) {
     case ADD_MESSAGE:
-      return [ ...state, {id: 10, text: action.message} ]
+      return [ ...state, action.message ]
     default:
       return state
   }
