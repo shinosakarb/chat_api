@@ -3,15 +3,20 @@ import $ from 'jquery'
 
 class MessageForm extends Component {
   onsubmit() {
-    const { actions } = this.props
-    $.ajax({
-      type: 'POST',
-      url: '/api/messages',
-      data: {
-        message: {text: this.textMessage.value}
-      },
-      success: ( (data)=>actions.addMessage(data) )
-    })
+    const { message, actions } = this.props
+    if( message ) {
+      actions.updateMessage( message.id, this.textMessage.value )
+    }
+    else {
+      $.ajax({
+        type: 'POST',
+        url: '/api/messages',
+        data: {
+          message: {text: this.textMessage.value}
+        },
+        success: ( (data)=>actions.addMessage(data) )
+      })
+    }
   }
 
   onCancel() {

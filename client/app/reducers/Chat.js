@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_MESSAGE, CREATE_MESSAGE_LIST, TOGGLE_DISPLAY_STATE } from '../constants/chat'
+import { ADD_MESSAGE, CREATE_MESSAGE_LIST, TOGGLE_DISPLAY_STATE, UPDATE_MESSAGE } from '../constants/chat'
 
 export const chatInitialState = [{"id":2,"text":"message2"},{"id":1,"text":"message1"}]
 
@@ -18,6 +18,16 @@ const chat = (state = '', action) => {
       return state.map( (message) => {
         if( message.id === action.message_id ) {
           message['displayState'] = !message['displayState']
+          return message
+        }
+        else {
+          return message
+        }
+      })
+    case UPDATE_MESSAGE:
+      return state.map( (message) => {
+        if( message.id === action.message_id ) {
+          message['text'] = action.new_text
           return message
         }
         else {
