@@ -3,7 +3,7 @@ import { Provider, connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../../actions/chat'
 
-import Messages from '../../components/Messages'
+import MessageList from '../../components/MessageList'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     const { chat, actions } = this.props
     return (
-      <Messages name={chat.name} updateName={actions.updateName} />
+      <MessageList messages={ chat } />
     )
   }
 }

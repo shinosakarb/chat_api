@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { HELLO_WORLD_NAME_UPDATE } from '../constants/chat'
 
-export const chatInitialState = {name: 'World'}
+export const chatInitialState = [{"id":2,"text":"message2"},{"id":1,"text":"message1"}]
 
 const chat = (state = '', action) => {
   switch (action.type) {
