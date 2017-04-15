@@ -31,12 +31,18 @@ class MessageForm extends Component {
     actions.toggleDisplayState( message.id )
   }
 
+  onDelete() {
+    const { actions, message } = this.props
+    actions.deleteMessage( message.id )
+  }
+
   render() {
     const { message } = this.props
     return (
       <div>
         <textarea ref={ (input) => {this.textMessage = input}} rows="4" cols="40" defaultValue={message?message.text:null} />
         { message ? <input type="button" value="cancel" onClick={this.onCancel.bind(this)} /> : null }
+        { message ? <input type="button" value="delete" onClick={this.onDelete.bind(this)} /> : null }
         <input type="button" value={message ? "update":"register"} onClick={this.onsubmit.bind(this)} />
       </div>
     )
