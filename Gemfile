@@ -32,6 +32,9 @@ gem 'jquery-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# a library for generating fake data.
+gem 'faker'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,18 +47,20 @@ group :development, :test do
 
   # rspec
   gem 'rspec-rails', '~> 3.5'
-  gem 'shoulda-matchers'
 
   # RSpec::JsonExpectations
   gem 'rspec-json_expectations'
 end
 
 group :test do
-  # for build strategies
-  gem 'factory_girl_rails'
-
-  # database cleaner
-  gem 'database_rewinder'
+  # a library for setting up Ruby objects as test data.
+  gem 'factory_girl_rails', '~> 4.0'
+  # shoulda-matcher provides Rspec and Minitest compatible one liners that test common Rails functionality.
+  gem 'shoulda-matchers', '~> 3.1'
+  # strategies for cleaning database in Ruby.
+  gem 'database_cleaner'
+  # an IRB alternative and runtime developer console.
+  gem 'pry'
 end
 
 group :development do
@@ -70,7 +75,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# json genarator
-gem 'active_model_serializers'
+# ActiveModel::Serializer implementation and Rails hooks.
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'foreman'
