@@ -2,41 +2,33 @@ module Api
   class MessagesController < ApiController
     before_action :set_message, only: [:show, :update, :destroy]
 
-    # GET /messages
+    # GET / messages
     def index
       @messages = Message.order(created_at: :asc).all
-
-      render json: @messages
+      json_response(@messages)
     end
 
-    # GET /messages/1
+    # GET / messages / :id
     def show
-      render json: @message
+      json_response(@message)
     end
 
-    # POST /messages
+    # POST / messages
     def create
-      @message = Message.new(message_params)
-
-      if @message.save
-        render json: @message, status: :created, location: [:admin, @message]
-      else
-        render json: @message.errors, status: :unprocessable_entity
-      end
+      @message = Message.create!(message_params)
+      json_response(@message, :created)
     end
 
-    # PATCH/PUT /messages/1
+    # PUT / messages / :id
     def update
-      if @message.update(message_params)
-        render json: @message
-      else
-        render json: @message.errors, status: :unprocessable_entity
-      end
+      @message.update(message_params)
+      head :no_content
     end
 
-    # DELETE /messages/1
+    # DELETE / messages / :id
     def destroy
       @message.destroy
+      head :no_content
     end
 
     private
@@ -47,7 +39,7 @@ module Api
 
       # Only allow a trusted parameter "white list" through.
       def message_params
-        params.require(:message).permit(:text)
+        params.permit(:text)
       end
   end
 end
